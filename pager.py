@@ -3,6 +3,7 @@
 import argparse
 
 from src.fifo import fifo
+from src.lru import lru
 # depois você adiciona:
 # from lru import lru
 # from optimal import optimal
@@ -41,6 +42,9 @@ def main():
 
     if args.algo == "fifo":
         result = fifo(trace, args.frames)
+
+    elif args.algo == "lru":
+        result = lru(trace, args.frames)
 
     # elif args.algo == "lru":
     #     result = lru(trace, args.frames)
