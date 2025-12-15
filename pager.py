@@ -4,11 +4,7 @@ import argparse
 
 from src.fifo import fifo
 from src.lru import lru
-# depois você adiciona:
-# from lru import lru
-# from optimal import optimal
-# etc.
-
+from src.otimo import otimo
 
 def load_trace(filename):
     trace = []
@@ -19,6 +15,7 @@ def load_trace(filename):
 
 
 def main():
+    #configuração da chamada no terminal
     parser = argparse.ArgumentParser(
         description="Simulador de algoritmos de substituição de páginas"
     )
@@ -46,8 +43,9 @@ def main():
     elif args.algo == "lru":
         result = lru(trace, args.frames)
 
-    # elif args.algo == "lru":
-    #     result = lru(trace, args.frames)
+    elif args.algo == "optimal":
+        result = otimo(trace, args.frames)
+
 
     else:
         print("Algoritmo ainda não implementado.")
@@ -62,7 +60,8 @@ def main():
 
     if args.verbose:
         print("Conjunto residente final:")
-        print("Pages:", result["memoria_final"])
+        print("frame_ids:", " ".join(map(str, result["frame_ids"])))
+        print("Page_ids:", " ".join(map(str, result["memoria_final"])))
 
 
 if __name__ == "__main__":
