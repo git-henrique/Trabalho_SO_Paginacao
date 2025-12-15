@@ -1,44 +1,47 @@
 def lru(trace, num_frames):
-    # agora a lista guarda de acordo com o uso, inicio tem a menos recente
-    # e o fim da lista é a mais recente usada
-    lista_uso = []
-    memoria = set()
+    # frames físicos (ordem fixa)
+    frames = [None] * num_frames
+
+    # marca o último uso de cada página
+    last_used = {}
 
     faltas = 0
     eviccoes = 0
-    total_referencias = 0
+    tempo = 0
 
     for pagina in trace:
-        total_referencias += 1
+        tempo += 1
 
         # HIT
-        if pagina in memoria:
-            lista_uso.remove(pagina)
-            lista_uso.append(pagina)
+        if pagina in frames:
+            last_used[pagina] = tempo
             continue
 
-        #contagem de faltas
+        # PAGE FAULT
         faltas += 1
 
-        if len(lista_uso) < num_frames:
-            lista_uso.append(pagina)
-            memoria.add(pagina)
+        # Frame livre?
+        if None in frames:
+            idx = frames.index(None)
+            frames[idx] = pagina
+            last_used[pagina] = tempo
         else:
-            # removendo a menos recente usada
-            vitima = lista_uso.pop(0)
-            memoria.remove(vitima)
-            eviccoes += 1
+            # escolher a página menos recentemente usada
+            vitima = min(frames, key=lambda p: last_used[p])
+            idx = frames.index(vitima)
 
-            lista_uso.append(pagina)
-            memoria.add(pagina)
+            frames[idx] = pagina
+            last_used.pop(vitima)
 
-    taxa_faltas = (faltas/total_referencias) * 100
+            last_used[pagina] = tempo
+
+    eviccoes = faltas
+    taxa_faltas = (faltas / len(trace)) * 100
 
     return {
         "faltas": faltas,
         "eviccoes": eviccoes,
         "taxa_faltas": taxa_faltas,
-        "memoria_final": lista_uso
+        "frame_ids": list(range(num_frames)),
+        "memoria_final": frames
     }
-
-        

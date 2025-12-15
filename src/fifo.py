@@ -21,16 +21,21 @@ def fifo(trace, num_frames):
         else:
             vitima = fila_processos.pop(0)
             memoria.remove(vitima)
-            eviccoes += 1
 
             fila_processos.append(pagina)
             memoria.add(pagina)
 
+    eviccoes = faltas
+    
     taxa_faltas = (faltas / total_referencias) * 100
+
+    indices = list(range(num_frames))
+
 
     return {
         "faltas": faltas,
         "eviccoes": eviccoes,
         "taxa_faltas": taxa_faltas,
+        "frame_ids": indices,
         "memoria_final": fila_processos
     }
