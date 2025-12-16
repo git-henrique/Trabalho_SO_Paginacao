@@ -22,7 +22,7 @@ def main():
     )
 
     parser.add_argument("--algo", required=True,
-                        choices=["fifo", "lru", "optimal", "clock", "second", "nru", "lfu", "mfu"],
+                        choices=["fifo", "lru", "optimal", "clock", "nru", "lfu", "mfu"],
                         help="Algoritmo de substituição")
 
     parser.add_argument("--frames", required=True, type=int,
@@ -65,7 +65,7 @@ def main():
     if args.verbose:
         print("Conjunto residente final:")
         print("frame_ids:", " ".join(map(str, result["frame_ids"])))
-        print("Page_ids:", " ".join(map(str, result["memoria_final"])))
+        print("page_ids:", " ".join(map(str, result["memoria_final"])))
 
 
 if __name__ == "__main__":
