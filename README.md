@@ -3,7 +3,7 @@ _________________________
 ### O presente projeto implementa um __simulador de substutuição de páginas__ na gerência de memória de um sitema operacional com os algoritmos clássicos, sendo integralmente implementado em ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 _________________________
 ## Algoritmos do simulador:
-- **FIFO** (Fist-In, First-Oout) ✅
+- **FIFO** (First-In, First-Oout) ✅
 - **LRU** (Least Recently Used) ✅
 - **Ótimo** ✅
 - **Clock** ✅
@@ -15,7 +15,7 @@ _________________________
 ## Descrição:
 Você pode chamar o simulador a partir do ```shell``` indicando: 
 
-1.  O algoritmo que você quer chmar;
+1.  O algoritmo que você quer chamar;
 2. A quantidade de frames da simulação;
 3. O arquivo trace para ser lido pelo simulador;
 4. Se deseja o ```verbose``` com a informações acerca dos frames e paginas finais;
