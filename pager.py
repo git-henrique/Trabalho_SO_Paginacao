@@ -5,6 +5,7 @@ import argparse
 from src.fifo import fifo
 from src.lru import lru
 from src.otimo import otimo
+from src.clock import clock
 
 def load_trace(filename):
     trace = []
@@ -45,6 +46,9 @@ def main():
 
     elif args.algo == "optimal":
         result = otimo(trace, args.frames)
+
+    elif args.algo == "clock":
+        result = clock(trace, args.frames)
 
 
     else:
