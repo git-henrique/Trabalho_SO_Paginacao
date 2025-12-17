@@ -50,10 +50,23 @@ Onde:
 - `--verbose` (opcional) exibe o conjunto residente final
 
 **Obs:** Neste projeto há um trace padrão: `silberschatz2001.trace`.
-
+__________________________
 ## Exemplo:
 ```bash
 ./pager.py --algo lru --frames 3 --trace silberschatz2001.trace --verbose 
+```
+### Exemplo de saída:
+
+```text
+Algoritmo: LRU
+Frames: 3
+Referências: 20
+Faltas de página: 12
+Taxa de faltas: 60.00%
+Evicções: 12
+Conjunto residente final:
+frame_ids: 0 1 2
+page_ids: 1 0 7
 ```
 _________________________
 ## Requisitos:
