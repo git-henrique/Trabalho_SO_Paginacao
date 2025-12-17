@@ -6,6 +6,9 @@ from src.fifo import fifo
 from src.lru import lru
 from src.otimo import otimo
 from src.clock import clock
+from src.nru import nru
+from src.lfu import lfu
+from src.mfu import mfu
 
 def load_trace(filename):
     trace = []
@@ -50,6 +53,14 @@ def main():
     elif args.algo == "clock":
         result = clock(trace, args.frames)
 
+    elif args.algo == "nru":
+        result = nru(trace, args.frames)
+
+    elif args.algo == "lfu":
+        result = lfu(trace, args.frames)
+
+    elif args.algo == "mfu":
+        result = mfu(trace, args.frames)
 
     else:
         print("Algoritmo ainda não implementado.")
