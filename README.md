@@ -7,34 +7,54 @@ _________________________
 - **LRU** (Least Recently Used) ✅
 - **Ótimo** ✅
 - **Clock** ✅
-- **NRU** (Not Recently Used) 🔄
-- **LFU** (Least Frequently Used) 🔄
-- **MFU** (Most Frequently Used) 🔄
+- **NRU** (Not Recently Used) ✅
+- **LFU** (Least Frequently Used) ✅
+- **MFU** (Most Frequently Used) ✅
 
 _________________________
-## Descrição:
-Você pode chamar o simulador a partir do ```shell``` indicando: 
+## Estrutura do projeto
 
-1.  O algoritmo que você quer chamar;
-2. A quantidade de frames da simulação;
-3. O arquivo trace para ser lido pelo simulador;
-4. Se deseja o ```verbose``` com a informações acerca dos frames e paginas finais;
+```text
+.
+├── pager.py
+├── README.md
+├── silberschatz2001.trace
+└── src/
+    ├── fifo.py     
+    ├── lru.py       
+    ├── otimo.py     
+    ├── clock.py     
+    ├── nru.py      
+    ├── lfu.py       
+    └── mfu.py       
+```
+- `pager.py`: programa principal, responsável pela interface de linha de comando e pela seleção do algoritmo.
 
+- `src/`: diretório que contém a implementação de cada algoritmo de substituição de páginas.
+
+- `silberschatz2001.trace`: arquivo de trace utilizado nos testes e validações.
+
+- `README.md`: documentação do projeto.
 _________________________
 ## Como utilizar o simulador:
 Após baixar todos os arquivos do projeto, faça a seguinte chamada no terminal:
 
-```./pager.py --algo <ALGO> --frames <N> --trace <arquivo> [--verbose] ```
+```bash
+./pager.py --algo <ALGO> --frames <N> --trace <arquivo> [--verbose]
+```
 
 Onde:
 - "ALGO" pode ser: `('fifo', 'lru', 'optimal', 'clock', 'nru', 'lfu', 'mfu')`;
 - "N" fica a sua escolha;
 - "arquivo" deve ser **exatamente** o nome do arquivo trace que deve estar no mesmo diretório que `pager.py`;
+- `--verbose` (opcional) exibe o conjunto residente final
 
 **Obs:** Neste projeto há um trace padrão: `silberschatz2001.trace`.
 
 ## Exemplo:
-```./pager.py --algo lru --frames 3 --trace silberschatz2001.trace --verbose```
+```bash
+./pager.py --algo lru --frames 3 --trace silberschatz2001.trace --verbose 
+```
 _________________________
 ## Requisitos:
 - Python 3.12+
